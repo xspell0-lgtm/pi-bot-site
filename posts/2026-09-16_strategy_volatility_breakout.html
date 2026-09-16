@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>[전략 팩트체크 #1] 래리 윌리엄스 변동성 돌파 전략, 코인 시장에서 지금도 통할까? (실전 백테스트 검증)</title>
+  <title>[전략 팩트체크 #1] 래리 윌리엄스 변동성 돌파 전략의 허와 실: 6년 실측 백테스트가 밝힌 충격적 진실 (-3.22% vs +955%)</title>
   <style>
     :root {
       --bg-color: #0d1117;
@@ -25,16 +25,16 @@
       padding: 30px 15px;
     }
     .container {
-      max-width: 860px;
+      max-width: 880px;
       margin: 0 auto;
       background: var(--card-bg);
       border: 1px solid var(--border-color);
       border-radius: 12px;
       padding: 32px;
     }
-    h1 { color: var(--text-title); font-size: 1.75rem; border-bottom: 2px solid var(--border-color); padding-bottom: 16px; line-height: 1.4; }
+    h1 { color: var(--text-title); font-size: 1.7rem; border-bottom: 2px solid var(--border-color); padding-bottom: 16px; line-height: 1.4; }
     h2 { color: var(--text-title); font-size: 1.35rem; margin-top: 36px; border-left: 4px solid var(--accent); padding-left: 12px; }
-    h3 { color: var(--blue); font-size: 1.15rem; margin-top: 24px; }
+    h3 { color: var(--blue); font-size: 1.12rem; margin-top: 24px; }
     .badge { display: inline-block; padding: 4px 10px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; background: #21262d; color: var(--accent); margin-right: 6px; }
     .tldr-box { background: #1c2128; border: 1px solid #f59e0b; border-radius: 8px; padding: 18px; margin: 20px 0; }
     .tldr-box li { margin-bottom: 8px; }
@@ -43,14 +43,16 @@
     th { background: #21262d; color: var(--text-title); font-weight: 600; }
     .pos-pnl { color: var(--green); font-weight: bold; }
     .neg-pnl { color: var(--red); font-weight: bold; }
-    blockquote { border-left: 4px solid var(--accent); margin: 24px 0; padding: 12px 18px; background: rgba(245, 158, 11, 0.08); color: #fde68a; font-style: italic; border-radius: 0 8px 8px 0; }
+    img { max-width: 100%; height: auto; border-radius: 8px; border: 1px solid var(--border-color); margin-top: 14px; box-shadow: 0 8px 24px rgba(0,0,0,0.5); }
+    .img-caption { font-size: 0.85rem; color: #8b949e; text-align: center; margin-top: 8px; margin-bottom: 24px; }
+    blockquote { border-left: 4px solid var(--accent); margin: 24px 0; padding: 14px 18px; background: rgba(245, 158, 11, 0.08); color: #fde68a; font-style: italic; border-radius: 0 8px 8px 0; }
     .disclaimer { background: #21262d; border-left: 4px solid #d29922; padding: 14px; font-size: 0.85rem; color: #8b949e; border-radius: 4px; margin-top: 30px; }
     .tag { display: inline-block; background: #21262d; color: #58a6ff; padding: 3px 10px; border-radius: 4px; font-size: 0.82rem; margin: 4px 3px; font-family: monospace; }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>[전략 팩트체크 #1] 래리 윌리엄스 변동성 돌파 전략, 코인 시장에서 지금도 통할까? (실전 백테스트 검증)</h1>
+    <h1>[전략 팩트체크 #1] 래리 윌리엄스 변동성 돌파 전략의 허와 실: 6년 실측 백테스트가 밝힌 충격적 진실 (-3.22% vs +955%)</h1>
     <div style="margin-bottom: 24px;">
       <span class="badge">📅 2026년 9월 16일 수요일</span>
       <span class="badge">🔬 퀀트 전략 연구소</span>
@@ -60,91 +62,138 @@
     <div class="tldr-box">
       <h3 style="margin-top:0; color:#f59e0b;">💡 핵심 요약 (TL;DR 3줄 요약)</h3>
       <ul style="padding-left: 20px; margin-bottom: 0;">
-        <li><strong>원조 공식 검증:</strong> 래리 윌리엄스의 변동성 돌파(K=0.5)를 비트코인 3개년(2023~2026) 실측 백테스트한 결과, 단순 보유 대비 수익률이 낮고 횡보장에서 잦은 손실 발생.</li>
-        <li><strong>치명적 맹점:</strong> 슬리피지(0.1%)와 거래 수수료(0.05%)를 반영하면 연간 누적 손실비용만 15%를 초과하며, 하락장 역추세 휩쏘(Whipsaw)에 취약.</li>
-        <li><strong>퀀트 개선 해법:</strong> 장기 이평선 추세 필터와 동적 이격도 보정, 미국 주식과의 무상관 자산배분이 결합되어야 실전 장기 우상향 가능.</li>
+        <li><strong>충격의 6년 실측 검증:</strong> 2020년부터 2026년까지 비트코인(BTC/USDT 1일봉)에 래리 윌리엄스 원조 변동성 돌파(K=0.5)를 적용한 결과, 단순 보유(존버)는 <strong>+955.57%</strong> 폭등한 반면 전략 수익률은 <strong>-3.22% (원금 손실)</strong> 기록.</li>
+        <li><strong>처참한 승률과 낙폭:</strong> 총 375회 거래 동안 평균 승률은 <strong>37.33%</strong>에 불과해 10번 중 6.3번은 손실로 끝났으며, 최대 낙폭(MDD)은 <strong>-43.65%</strong>로 계좌가 반토막 나는 고통 발생.</li>
+        <li><strong>수수료 0%인데도 마이너스:</strong> 거래 수수료와 슬리피지를 전혀 차감하지 않은 최상의 조건에서도 프로핏 팩터가 <strong>0.99</strong>로 손실이 수익을 압도함. 실전 수수료 반영 시 확정적 깡통 위험.</li>
       </ul>
     </div>
 
-    <h2>1. 래리 윌리엄스 변동성 돌파 전략(VBO)이란?</h2>
+    <h2>1. 전설의 전략, 과연 코인 시장에서도 유효할까?</h2>
     <p>
-      자동매매나 퀀트 투자를 처음 공부할 때 99%가 가장 먼저 접하는 전략이 바로 1987년 로빈스 컵 트레이딩 챔피언십에서 11,300% 수익률을 기록한 래리 윌리엄스(Larry Williams)의 <strong>변동성 돌파 전략</strong>입니다.
+      자동매매나 시스템 트레이딩에 입문하면 유튜브, 블로그, 책에서 가장 먼저 추천하는 전략이 있습니다. 바로 1987년 실전투자대회에서 1만 달러로 114만 달러(11,300%)를 벌어들인 전설적인 트레이더 래리 윌리엄스(Larry Williams)의 <strong>변동성 돌파 전략(Volatility Breakout)</strong>입니다.
     </p>
     <ul>
-      <li><strong>변동폭(Range) 계산:</strong> <code>전일 고가(High) - 전일 저가(Low)</code></li>
-      <li><strong>매수 타점:</strong> <code>당일 시가 + (변동폭 × K)</code> 가격을 돌파하는 순간 즉시 시장가 매수 (기본 K = 0.5)</li>
-      <li><strong>매도(청산) 타점:</strong> 익일 시가에 전량 무조건 매도 (오버나이트 1회 후 청산)</li>
+      <li><strong>변동폭(Range):</strong> <code>전일 고가(High) - 전일 저가(Low)</code></li>
+      <li><strong>매수 조건:</strong> <code>당일 시가 + (변동폭 × 0.5)</code> 가격을 위로 뚫는 순간 즉시 시장가 매수</li>
+      <li><strong>청산 조건:</strong> 익일 시가에 전량 무조건 시장가 매도 (1일 보유 후 청산)</li>
     </ul>
     <p>
-      유튜브나 입문 서적에서는 "추세가 형성되는 초입에 타서 하루치 수익을 챙기고 감정 없이 빠져나오는 최고의 전략"이라며 극찬합니다. 그렇다면 과연 2023년부터 2026년까지의 실제 코인 시장에서도 통했을까요?
+      수많은 인플루언서들은 <em>"감정을 배제하고 상승 추세의 초입에 올라타 하루치 이익만 챙기고 나오는 무적의 전략"</em>이라고 홍보합니다. 그렇다면 지난 <strong>2020년 1월 1일부터 2026년 9월 16일까지 약 6년 8개월(2,450일) 동안의 비트코인 실제 장기 차트</strong>에 이 원조 규칙을 그대로 적용했다면 내 계좌는 어떻게 되었을까요?
     </p>
 
-    <h2>2. 비트코인 3개년 실측 백테스트 결과 (2023 ~ 2026)</h2>
-    <p>PI-BOT 관제탑 백테스터 엔진을 통해 수수료(Taker 0.05%)와 실전 체결 슬리피지(0.10%)를 엄격하게 반영하여 시뮬레이션한 결과입니다.</p>
+    <h2>2. [실제 검증 인증] 비트코인 6년 8개월 백테스터 전체 화면 공개</h2>
+    <p>가공된 수치나 이론적인 가정이 아닙니다. 실제 백테스터 엔진을 통해 비트코인(BTC/USDT)의 1일봉 과거 전체 데이터를 바탕으로 시뮬레이션한 원본 결과 화면입니다.</p>
+
+    <img src="../images/backtest_larry_btc_real.png" alt="래리 윌리엄스 변동성 돌파 BTC 실측 백테스터 화면">
+    <div class="img-caption">▲ [실측 인증] 2020.01.01 ~ 2026.09.16 비트코인 래리 윌리엄스 변동성 돌파(K=0.5) 백테스터 실행 화면</div>
 
     <table>
       <thead>
         <tr>
-          <th>지표 항목</th>
-          <th>원조 변동성 돌파 (K=0.5)</th>
-          <th>비트코인 단순 바이앤홀드(존버)</th>
-          <th>PI-BOT 멀티에셋 복합 모델</th>
+          <th>검증 지표 항목</th>
+          <th>실측 백테스트 결과</th>
+          <th>지표 분석 및 의미</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><strong>누적 수익률</strong></td>
-          <td class="pos-pnl">+48.2%</td>
-          <td class="pos-pnl">+134.5%</td>
-          <td class="pos-pnl">+118.7%</td>
+          <td><strong>대상 자산 / 주기</strong></td>
+          <td><strong>BTC/USDT (1일봉, 롱 전용)</strong></td>
+          <td>10,000 USDT 기준, 1배 레버리지</td>
         </tr>
         <tr>
-          <td><strong>최대 낙폭 (MDD)</strong></td>
-          <td class="neg-pnl">-28.4%</td>
-          <td class="neg-pnl">-38.2%</td>
-          <td class="pos-pnl" style="color:#58a6ff;">-12.4% (안정 방어)</td>
+          <td><strong>시뮬레이션 기간</strong></td>
+          <td><strong>2020.01.01 ~ 2026.09.16</strong></td>
+          <td><strong>총 2,450일 (약 6년 8개월 장기 검증)</strong></td>
         </tr>
         <tr>
-          <td><strong>매매 승률</strong></td>
-          <td>42.8%</td>
-          <td>N/A</td>
-          <td class="pos-pnl">54.2%</td>
+          <td><strong>적용 전략</strong></td>
+          <td><strong>래리 윌리엄스 변동성 돌파 (K=0.5)</strong></td>
+          <td>상위주기 0, 익절/손절 0 (원조 룰 엄격 준수)</td>
         </tr>
         <tr>
-          <td><strong>손익비 (Profit/Loss)</strong></td>
-          <td>1.35</td>
-          <td>N/A</td>
-          <td class="pos-pnl">1.78</td>
+          <td><strong>거래 비용 조건</strong></td>
+          <td><strong>수수료 0%, 슬리피지 0%</strong></td>
+          <td>전략에 가장 유리하도록 비용 미차감</td>
         </tr>
         <tr>
-          <td><strong>연간 거래 횟수</strong></td>
-          <td>184회</td>
-          <td>0회</td>
-          <td>42회 (선별 매매)</td>
+          <td><strong>비트코인 단순 보유 (존버)</strong></td>
+          <td class="pos-pnl">+955.57%</td>
+          <td>10,000 USDT ➔ <strong>105,557 USDT (10.5배 폭등)</strong></td>
+        </tr>
+        <tr>
+          <td><strong>전략 누적 수익률</strong></td>
+          <td class="neg-pnl">-3.22% ❌</td>
+          <td>10,000 USDT ➔ <strong>9,678 USDT (원금 손실)</strong></td>
+        </tr>
+        <tr>
+          <td><strong>USDT 최대 낙폭 (MDD)</strong></td>
+          <td class="neg-pnl">-43.65% ❌</td>
+          <td>돈은 못 벌면서 계좌는 <strong>-43.6% 출렁임</strong></td>
+        </tr>
+        <tr>
+          <td><strong>평균 매매 승률</strong></td>
+          <td class="neg-pnl">37.33% ❌</td>
+          <td>10번 매수하면 <strong>6~7번은 무조건 손실</strong></td>
+        </tr>
+        <tr>
+          <td><strong>총 거래 횟수</strong></td>
+          <td><strong>375회</strong></td>
+          <td>약 6.5일에 1회씩 꾸준히 매매 집행</td>
+        </tr>
+        <tr>
+          <td><strong>프로핏 팩터 (Profit Factor)</strong></td>
+          <td class="neg-pnl">0.99 ❌</td>
+          <td>1달러 벌 때 1.01달러 잃음 (손실 > 수익)</td>
+        </tr>
+        <tr>
+          <td><strong>샤프 지수 (Sharpe Ratio)</strong></td>
+          <td><strong>0.25</strong></td>
+          <td>무위험 채권 금리에도 한참 못 미침</td>
+        </tr>
+        <tr>
+          <td><strong>칼마 비율 (Calmar Ratio)</strong></td>
+          <td class="neg-pnl">-0.07</td>
+          <td>낙폭 대비 회복 탄력성 마이너스</td>
         </tr>
       </tbody>
     </table>
 
-    <h2>3. 원조 전략이 현대 시장에서 계좌를 녹이는 3가지 이유</h2>
-    <h3>① 하락 추세장 필터의 부재</h3>
-    <p>전일 대비 반등만 나오면 매수하기 때문에, 시장이 200일 이동평균선 아래에 있는 대세 하락장에서도 기계적으로 매수 버튼이 눌립니다. 하락장 돌파는 열에 아홉이 속임수(Dead Cat Bounce)입니다.</p>
+    <h2>3. 왜 비트코인이 10배 폭등하는 동안 봇은 마이너스일까? (3대 치명적 맹점)</h2>
+    <p>차트를 보시면 녹색 점선인 <strong>비트코인 단순 보유선은 하늘을 뚫고 우상향(+955.57%)</strong>하고 있지만, 하단의 <strong>변동성 돌파 누적 수익선(녹색/적색 실선)은 지루한 우하향 박스권(-3.22%)</strong>에 갇혀 있습니다.</p>
+    <p>수수료를 단 1원도 떼지 않았음에도 원조 전략이 완전히 참패한 3가지 구조적 이유는 다음과 같습니다:</p>
 
-    <h3>② 고정 K값의 한계 (K=0.5)</h3>
-    <p>시장이 조용할 때와 미친 듯이 날뛸 때의 성격이 다른데, 무조건 0.5를 곱하면 변동성이 낮을 때는 늦게 타고, 변동성이 높을 때는 너무 일찍 타서 윗꼬리에 물립니다.</p>
+    <h3>① 승률 37.33%의 덫 (잦은 윗꼬리 휩쏘)</h3>
+    <p>
+      변동성 돌파는 장중 가격이 <code>시가 + 전일변동폭*0.5</code>를 뚫을 때 시장가로 따라붙습니다. 하지만 코인 시장은 변동성이 극심하여, 장중에 돌파가 나와서 매수 체결이 된 직후 차익실현 매물이 쏟아지며 <strong>긴 윗꼬리를 달고 시가 아래로 곤두박질치는 날</strong>이 허다합니다.
+      결과적으로 총 375회 거래 중 <strong>235회(62.7%)가 손실 마감</strong>이었으며, 매수할 때마다 고점에 물리는 악순환이 6년 내내 반복되었습니다.
+    </p>
 
-    <h3>③ 거래 비용의 누적 (수수료 함정)</h3>
-    <p>연간 180회 이상의 잦은 매매로 계좌 원금의 약 18%가 거래소 수수료와 슬리피지로 증발합니다.</p>
+    <h3>② 대상승장 조기 청산의 역설 (추세 복리 상실)</h3>
+    <p>
+      비트코인이 대세 상승장에 진입하면 3일, 5일, 1주일 연속으로 폭발적인 장대양봉을 뽑아냅니다. 하지만 원조 전략은 <strong>"다음 날 아침 시가에 무조건 전량 매도"</strong>하므로, 하루치 수익만 먹고 포지션을 비워버립니다. 
+      그리고 그 다음 날 더 높아진 시가 위에서 또 돌파를 기다려 비싸게 재매수하다가, 하루라도 꺾이면 고점에서 물려 그동안의 이익을 다 반납하게 됩니다.
+    </p>
 
-    <h2>4. PI-BOT은 이 문제를 어떻게 극복했는가?</h2>
-    <ol>
-      <li><strong>동적 이격도 & 추세 필터:</strong> 이평선 정배열 구간에서만 진입하며, 과열권에서는 진입을 거절합니다.</li>
-      <li><strong>2배 보수적 레버리지 한도:</strong> 고레버리지를 금지하고 2배 이하로 고정하여 꼬리 찌르기 청산을 방어합니다.</li>
-      <li><strong>미국 주식(Alpaca)과의 무상관 자산배분:</strong> 코인이 횡보할 때 나스닥 모멘텀 우량주가 든든하게 계좌를 지탱합니다.</li>
-    </ol>
+    <h3>③ 횡보장의 계좌 갉아먹기 & 수수료의 공포</h3>
+    <p>
+      비트코인이 몇 달 동안 방향성 없이 좁은 박스권에서 오르내릴 때, 전략은 지속적으로 돌파 매수를 시도했다가 당일 손실을 입으며 계좌를 갉아먹습니다.
+      그 결과 번 돈과 잃은 돈의 비율인 <strong>프로핏 팩터가 0.99</strong>로, 6년 동안 수백 번 매매를 거듭할수록 자산이 쪼그라들었습니다.
+    </p>
+    <p>
+      만약 여기에 실전 선물 거래소 수수료(테이커 0.05%)와 실전 체결 슬리피지(0.10%)를 반영했다면, <strong>375회 매매를 거치는 동안 수수료로만 원금의 30~50% 이상이 증발하여 계좌는 회복 불가능한 깡통</strong>을 찼을 것입니다.
+    </p>
 
+    <h2>4. 퀀트 연구소의 최종 결론</h2>
     <blockquote>
-      "어떤 전략도 백테스트와 수수료 검증 없이는 믿지 마세요. 마법의 지표는 없으며, 오직 필터링과 자산배분만이 계좌를 살립니다."
+      "원조 규칙(고정 K=0.5, 무필터) 그대로의 변동성 돌파는 현대 코인 시장에서 완전히 죽은 전략이다."
     </blockquote>
+    <p>
+      1980년대 미국 주식/선물 시장에서 탄생한 원조 공식은 알고리즘 봇들이 넘쳐나는 현대 가상자산 시장에서 더 이상 마법의 탄환이 아닙니다.
+    </p>
+    <p>
+      추세를 판별하는 <strong>장기 이평선 필터(Trend Filter)</strong>, 박스권 횡보를 걸러내는 <strong>동적 이격도 보정</strong>, 그리고 변동성에 맞춰 비중을 조절하는 <strong>동적 리스크 관리</strong>가 없는 무지성 변동성 돌파는 계좌를 파멸로 이끄는 지름길임을 6년 8개월간의 실측 데이터가 명백히 증명하고 있습니다.
+    </p>
 
     <div class="disclaimer">
       <strong>⚠️ 투자 유의사항:</strong><br>
@@ -154,10 +203,10 @@
     <div style="margin-top: 24px;">
       <span class="tag">#변동성돌파</span>
       <span class="tag">#래리윌리엄스</span>
-      <span class="tag">#백테스트검증</span>
+      <span class="tag">#비트코인백테스트</span>
       <span class="tag">#자동매매파헤치기</span>
-      <span class="tag">#퀀트투자</span>
-      <span class="tag">#리스크관리</span>
+      <span class="tag">#MDD분석</span>
+      <span class="tag">#퀀트팩트체크</span>
     </div>
 
     <div style="margin-top: 40px; padding-top: 24px; border-top: 1px solid #30363d;">
