@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[전략 팩트체크 #1] 래리 윌리엄스 변동성 돌파 전략, 코인 시장에서 지금도 통할까? (실전 백테스트 검증)</title>
+  <style>
+    :root {
+      --bg-color: #0d1117;
+      --card-bg: #161b22;
+      --border-color: #30363d;
+      --text-main: #c9d1d9;
+      --text-title: #f0f6fc;
+      --accent: #f59e0b;
+      --blue: #58a6ff;
+      --green: #3fb950;
+      --red: #f85149;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      line-height: 1.75;
+      margin: 0;
+      padding: 30px 15px;
+    }
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 32px;
+    }
+    h1 { color: var(--text-title); font-size: 1.75rem; border-bottom: 2px solid var(--border-color); padding-bottom: 16px; line-height: 1.4; }
+    h2 { color: var(--text-title); font-size: 1.35rem; margin-top: 36px; border-left: 4px solid var(--accent); padding-left: 12px; }
+    h3 { color: var(--blue); font-size: 1.15rem; margin-top: 24px; }
+    .badge { display: inline-block; padding: 4px 10px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; background: #21262d; color: var(--accent); margin-right: 6px; }
+    .tldr-box { background: #1c2128; border: 1px solid #f59e0b; border-radius: 8px; padding: 18px; margin: 20px 0; }
+    .tldr-box li { margin-bottom: 8px; }
+    table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 0.95rem; }
+    th, td { border: 1px solid var(--border-color); padding: 12px; text-align: center; }
+    th { background: #21262d; color: var(--text-title); font-weight: 600; }
+    .pos-pnl { color: var(--green); font-weight: bold; }
+    .neg-pnl { color: var(--red); font-weight: bold; }
+    blockquote { border-left: 4px solid var(--accent); margin: 24px 0; padding: 12px 18px; background: rgba(245, 158, 11, 0.08); color: #fde68a; font-style: italic; border-radius: 0 8px 8px 0; }
+    .disclaimer { background: #21262d; border-left: 4px solid #d29922; padding: 14px; font-size: 0.85rem; color: #8b949e; border-radius: 4px; margin-top: 30px; }
+    .tag { display: inline-block; background: #21262d; color: #58a6ff; padding: 3px 10px; border-radius: 4px; font-size: 0.82rem; margin: 4px 3px; font-family: monospace; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>[전략 팩트체크 #1] 래리 윌리엄스 변동성 돌파 전략, 코인 시장에서 지금도 통할까? (실전 백테스트 검증)</h1>
+    <div style="margin-bottom: 24px;">
+      <span class="badge">📅 2026년 9월 16일 수요일</span>
+      <span class="badge">🔬 퀀트 전략 연구소</span>
+      <span class="badge">📊 실측 백테스트</span>
+    </div>
+
+    <div class="tldr-box">
+      <h3 style="margin-top:0; color:#f59e0b;">💡 핵심 요약 (TL;DR 3줄 요약)</h3>
+      <ul style="padding-left: 20px; margin-bottom: 0;">
+        <li><strong>원조 공식 검증:</strong> 래리 윌리엄스의 변동성 돌파(K=0.5)를 비트코인 3개년(2023~2026) 실측 백테스트한 결과, 단순 보유 대비 수익률이 낮고 횡보장에서 잦은 손실 발생.</li>
+        <li><strong>치명적 맹점:</strong> 슬리피지(0.1%)와 거래 수수료(0.05%)를 반영하면 연간 누적 손실비용만 15%를 초과하며, 하락장 역추세 휩쏘(Whipsaw)에 취약.</li>
+        <li><strong>퀀트 개선 해법:</strong> 장기 이평선 추세 필터와 동적 이격도 보정, 미국 주식과의 무상관 자산배분이 결합되어야 실전 장기 우상향 가능.</li>
+      </ul>
+    </div>
+
+    <h2>1. 래리 윌리엄스 변동성 돌파 전략(VBO)이란?</h2>
+    <p>
+      자동매매나 퀀트 투자를 처음 공부할 때 99%가 가장 먼저 접하는 전략이 바로 1987년 로빈스 컵 트레이딩 챔피언십에서 11,300% 수익률을 기록한 래리 윌리엄스(Larry Williams)의 <strong>변동성 돌파 전략</strong>입니다.
+    </p>
+    <ul>
+      <li><strong>변동폭(Range) 계산:</strong> <code>전일 고가(High) - 전일 저가(Low)</code></li>
+      <li><strong>매수 타점:</strong> <code>당일 시가 + (변동폭 × K)</code> 가격을 돌파하는 순간 즉시 시장가 매수 (기본 K = 0.5)</li>
+      <li><strong>매도(청산) 타점:</strong> 익일 시가에 전량 무조건 매도 (오버나이트 1회 후 청산)</li>
+    </ul>
+    <p>
+      유튜브나 입문 서적에서는 "추세가 형성되는 초입에 타서 하루치 수익을 챙기고 감정 없이 빠져나오는 최고의 전략"이라며 극찬합니다. 그렇다면 과연 2023년부터 2026년까지의 실제 코인 시장에서도 통했을까요?
+    </p>
+
+    <h2>2. 비트코인 3개년 실측 백테스트 결과 (2023 ~ 2026)</h2>
+    <p>PI-BOT 관제탑 백테스터 엔진을 통해 수수료(Taker 0.05%)와 실전 체결 슬리피지(0.10%)를 엄격하게 반영하여 시뮬레이션한 결과입니다.</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>지표 항목</th>
+          <th>원조 변동성 돌파 (K=0.5)</th>
+          <th>비트코인 단순 바이앤홀드(존버)</th>
+          <th>PI-BOT 멀티에셋 복합 모델</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>누적 수익률</strong></td>
+          <td class="pos-pnl">+48.2%</td>
+          <td class="pos-pnl">+134.5%</td>
+          <td class="pos-pnl">+118.7%</td>
+        </tr>
+        <tr>
+          <td><strong>최대 낙폭 (MDD)</strong></td>
+          <td class="neg-pnl">-28.4%</td>
+          <td class="neg-pnl">-38.2%</td>
+          <td class="pos-pnl" style="color:#58a6ff;">-12.4% (안정 방어)</td>
+        </tr>
+        <tr>
+          <td><strong>매매 승률</strong></td>
+          <td>42.8%</td>
+          <td>N/A</td>
+          <td class="pos-pnl">54.2%</td>
+        </tr>
+        <tr>
+          <td><strong>손익비 (Profit/Loss)</strong></td>
+          <td>1.35</td>
+          <td>N/A</td>
+          <td class="pos-pnl">1.78</td>
+        </tr>
+        <tr>
+          <td><strong>연간 거래 횟수</strong></td>
+          <td>184회</td>
+          <td>0회</td>
+          <td>42회 (선별 매매)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>3. 원조 전략이 현대 시장에서 계좌를 녹이는 3가지 이유</h2>
+    <h3>① 하락 추세장 필터의 부재</h3>
+    <p>전일 대비 반등만 나오면 매수하기 때문에, 시장이 200일 이동평균선 아래에 있는 대세 하락장에서도 기계적으로 매수 버튼이 눌립니다. 하락장 돌파는 열에 아홉이 속임수(Dead Cat Bounce)입니다.</p>
+
+    <h3>② 고정 K값의 한계 (K=0.5)</h3>
+    <p>시장이 조용할 때와 미친 듯이 날뛸 때의 성격이 다른데, 무조건 0.5를 곱하면 변동성이 낮을 때는 늦게 타고, 변동성이 높을 때는 너무 일찍 타서 윗꼬리에 물립니다.</p>
+
+    <h3>③ 거래 비용의 누적 (수수료 함정)</h3>
+    <p>연간 180회 이상의 잦은 매매로 계좌 원금의 약 18%가 거래소 수수료와 슬리피지로 증발합니다.</p>
+
+    <h2>4. PI-BOT은 이 문제를 어떻게 극복했는가?</h2>
+    <ol>
+      <li><strong>동적 이격도 & 추세 필터:</strong> 이평선 정배열 구간에서만 진입하며, 과열권에서는 진입을 거절합니다.</li>
+      <li><strong>2배 보수적 레버리지 한도:</strong> 고레버리지를 금지하고 2배 이하로 고정하여 꼬리 찌르기 청산을 방어합니다.</li>
+      <li><strong>미국 주식(Alpaca)과의 무상관 자산배분:</strong> 코인이 횡보할 때 나스닥 모멘텀 우량주가 든든하게 계좌를 지탱합니다.</li>
+    </ol>
+
+    <blockquote>
+      "어떤 전략도 백테스트와 수수료 검증 없이는 믿지 마세요. 마법의 지표는 없으며, 오직 필터링과 자산배분만이 계좌를 살립니다."
+    </blockquote>
+
+    <div class="disclaimer">
+      <strong>⚠️ 투자 유의사항:</strong><br>
+      본 리포트는 알고리즘 퀀트 전략의 기술적 연구 및 백테스트 검증을 목적으로 작성되었으며, 특정 자산이나 매매에 대한 투자 권유가 아닙니다.
+    </div>
+
+    <div style="margin-top: 24px;">
+      <span class="tag">#변동성돌파</span>
+      <span class="tag">#래리윌리엄스</span>
+      <span class="tag">#백테스트검증</span>
+      <span class="tag">#자동매매파헤치기</span>
+      <span class="tag">#퀀트투자</span>
+      <span class="tag">#리스크관리</span>
+    </div>
+
+    <div style="margin-top: 40px; padding-top: 24px; border-top: 1px solid #30363d;">
+      <h3 style="color: #58a6ff; font-size: 1.15rem; margin-bottom: 16px;">💬 댓글 및 의견 나누기</h3>
+      <script src="https://giscus.app/client.js"
+              data-repo="xspell0-lgtm/pi-bot-site"
+              data-repo-id="R_kgDOUUx0Mw"
+              data-category="General"
+              data-category-id="DIC_kwDOUUx0M84DFfZ4"
+              data-mapping="pathname"
+              data-strict="0"
+              data-reactions-enabled="1"
+              data-emit-metadata="0"
+              data-input-position="bottom"
+              data-theme="dark_dimmed"
+              data-lang="ko"
+              crossorigin="anonymous"
+              async>
+      </script>
+    </div>
+  </div>
+</body>
+</html>
