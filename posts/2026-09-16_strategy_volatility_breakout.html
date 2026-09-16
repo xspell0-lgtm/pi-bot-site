@@ -25,7 +25,7 @@
       padding: 30px 15px;
     }
     .container {
-      max-width: 880px;
+      max-width: 920px;
       margin: 0 auto;
       background: var(--card-bg);
       border: 1px solid var(--border-color);
@@ -33,7 +33,7 @@
       padding: 32px;
     }
     h1 { color: var(--text-title); font-size: 1.7rem; border-bottom: 2px solid var(--border-color); padding-bottom: 16px; line-height: 1.4; }
-    h2 { color: var(--text-title); font-size: 1.35rem; margin-top: 36px; border-left: 4px solid var(--accent); padding-left: 12px; }
+    h2 { color: var(--text-title); font-size: 1.35rem; margin-top: 40px; border-left: 4px solid var(--accent); padding-left: 12px; }
     h3 { color: var(--blue); font-size: 1.12rem; margin-top: 24px; }
     .badge { display: inline-block; padding: 4px 10px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; background: #21262d; color: var(--accent); margin-right: 6px; }
     .tldr-box { background: #1c2128; border: 1px solid #f59e0b; border-radius: 8px; padding: 18px; margin: 20px 0; }
@@ -43,8 +43,9 @@
     th { background: #21262d; color: var(--text-title); font-weight: 600; }
     .pos-pnl { color: var(--green); font-weight: bold; }
     .neg-pnl { color: var(--red); font-weight: bold; }
-    img { max-width: 100%; height: auto; border-radius: 8px; border: 1px solid var(--border-color); margin-top: 14px; box-shadow: 0 8px 24px rgba(0,0,0,0.5); }
-    .img-caption { font-size: 0.85rem; color: #8b949e; text-align: center; margin-top: 8px; margin-bottom: 24px; }
+    .img-box { margin: 24px 0; text-align: center; }
+    img { max-width: 100%; height: auto; border-radius: 8px; border: 1px solid var(--border-color); box-shadow: 0 8px 24px rgba(0,0,0,0.55); }
+    .img-caption { font-size: 0.85rem; color: #8b949e; text-align: center; margin-top: 10px; }
     blockquote { border-left: 4px solid var(--accent); margin: 24px 0; padding: 14px 18px; background: rgba(245, 158, 11, 0.08); color: #fde68a; font-style: italic; border-radius: 0 8px 8px 0; }
     .disclaimer { background: #21262d; border-left: 4px solid #d29922; padding: 14px; font-size: 0.85rem; color: #8b949e; border-radius: 4px; margin-top: 30px; }
     .tag { display: inline-block; background: #21262d; color: #58a6ff; padding: 3px 10px; border-radius: 4px; font-size: 0.82rem; margin: 4px 3px; font-family: monospace; }
@@ -62,15 +63,15 @@
     <div class="tldr-box">
       <h3 style="margin-top:0; color:#f59e0b;">💡 핵심 요약 (TL;DR 3줄 요약)</h3>
       <ul style="padding-left: 20px; margin-bottom: 0;">
-        <li><strong>충격의 6년 실측 검증:</strong> 2020년부터 2026년까지 비트코인(BTC/USDT 1일봉)에 래리 윌리엄스 원조 변동성 돌파(K=0.5)를 적용한 결과, 단순 보유(존버)는 <strong>+955.57%</strong> 폭등한 반면 전략 수익률은 <strong>-3.22% (원금 손실)</strong> 기록.</li>
-        <li><strong>처참한 승률과 낙폭:</strong> 총 375회 거래 동안 평균 승률은 <strong>37.33%</strong>에 불과해 10번 중 6.3번은 손실로 끝났으며, 최대 낙폭(MDD)은 <strong>-43.65%</strong>로 계좌가 반토막 나는 고통 발생.</li>
-        <li><strong>수수료 0%인데도 마이너스:</strong> 거래 수수료와 슬리피지를 전혀 차감하지 않은 최상의 조건에서도 프로핏 팩터가 <strong>0.99</strong>로 손실이 수익을 압도함. 실전 수수료 반영 시 확정적 깡통 위험.</li>
+        <li><strong>충격의 6년 8개월 실측 검증:</strong> 2020년부터 2026년까지 비트코인(BTC/USDT 1일봉)에 래리 윌리엄스 변동성 돌파(K=0.5)를 적용한 결과, 단순 보유(존버)는 <strong>+955.57%</strong> 폭등한 반면 전략 수익률은 <strong>-3.22% (원금 손실)</strong> 기록.</li>
+        <li><strong>필터(ADX)와 수수료 0%의 착시:</strong> 장중 속임수를 피하고자 ADX 추세 필터까지 걸고 거래 수수료를 0%로 둔 최상의 조건에서도, 승률은 <strong>37.33%</strong>에 그치고 최대 낙폭(MDD)은 <strong>-43.65%</strong>까지 추락.</li>
+        <li><strong>구조적 3대 맹점:</strong> ① 잦은 윗꼬리 휩쏘로 10번 중 6.3번 손실 청산, ② 익일 시가 매도로 인한 대상승장 복리 기회 상실, ③ 횡보장 계좌 갉아먹기(Profit Factor 0.99).</li>
       </ul>
     </div>
 
     <h2>1. 전설의 전략, 과연 코인 시장에서도 유효할까?</h2>
     <p>
-      자동매매나 시스템 트레이딩에 입문하면 유튜브, 블로그, 책에서 가장 먼저 추천하는 전략이 있습니다. 바로 1987년 실전투자대회에서 1만 달러로 114만 달러(11,300%)를 벌어들인 전설적인 트레이더 래리 윌리엄스(Larry Williams)의 <strong>변동성 돌파 전략(Volatility Breakout)</strong>입니다.
+      자동매매나 퀀트 투자를 처음 공부할 때 99%가 가장 먼저 접하는 전략이 바로 1987년 실전투자대회에서 1만 달러로 114만 달러(11,300%)를 벌어들인 전설적인 트레이더 래리 윌리엄스(Larry Williams)의 <strong>변동성 돌파 전략(Volatility Breakout)</strong>입니다.
     </p>
     <ul>
       <li><strong>변동폭(Range):</strong> <code>전일 고가(High) - 전일 저가(Low)</code></li>
@@ -78,14 +79,16 @@
       <li><strong>청산 조건:</strong> 익일 시가에 전량 무조건 시장가 매도 (1일 보유 후 청산)</li>
     </ul>
     <p>
-      수많은 인플루언서들은 <em>"감정을 배제하고 상승 추세의 초입에 올라타 하루치 이익만 챙기고 나오는 무적의 전략"</em>이라고 홍보합니다. 그렇다면 지난 <strong>2020년 1월 1일부터 2026년 9월 16일까지 약 6년 8개월(2,450일) 동안의 비트코인 실제 장기 차트</strong>에 이 원조 규칙을 그대로 적용했다면 내 계좌는 어떻게 되었을까요?
+      수많은 유튜브와 블로그에서는 <em>"감정을 배제하고 상승 추세의 초입에 올라타 하루치 이익만 챙기고 나오는 무적의 전략"</em>이라며 찬양합니다. 그렇다면 지난 <strong>2020년 1월 1일부터 2026년 9월 16일까지 약 6년 8개월(2,450일) 동안의 비트코인 실제 장기 차트</strong>에 이 전략을 적용했을 때의 진짜 성적표는 어떨까요? 불필요한 브라우저 화면을 걷어내고, 실제 백테스터의 핵심 데이터 3개 영역을 낱낱이 파헤쳐 봅니다.
     </p>
 
-    <h2>2. [실제 검증 인증] 비트코인 6년 8개월 백테스터 전체 화면 공개</h2>
-    <p>가공된 수치나 이론적인 가정이 아닙니다. 실제 백테스터 엔진을 통해 비트코인(BTC/USDT)의 1일봉 과거 전체 데이터를 바탕으로 시뮬레이션한 원본 결과 화면입니다.</p>
+    <h2>2. [검증 1] 핵심 지표 & 실시간 누적 수익 차트</h2>
+    <p>가공된 이론치가 아닙니다. 실제 백테스터 엔진을 통해 비트코인(BTC/USDT)의 1일봉 과거 전체 데이터를 바탕으로 시뮬레이션한 원본 결과입니다.</p>
 
-    <img src="../images/backtest_larry_btc_real.png" alt="래리 윌리엄스 변동성 돌파 BTC 실측 백테스터 화면">
-    <div class="img-caption">▲ [실측 인증] 2020.01.01 ~ 2026.09.16 비트코인 래리 윌리엄스 변동성 돌파(K=0.5) 백테스터 실행 화면</div>
+    <div class="img-box">
+      <img src="../images/backtest_01_metrics_chart.png" alt="1. 핵심 성과 지표 및 실시간 누적 수익 차트">
+      <div class="img-caption">▲ [실측 인증 1] 핵심 성과 요약 카드와 실시간 누적 수익 차트 (Strategy PnL vs Buy & Hold)</div>
+    </div>
 
     <table>
       <thead>
@@ -109,12 +112,7 @@
         <tr>
           <td><strong>적용 전략</strong></td>
           <td><strong>래리 윌리엄스 변동성 돌파 (K=0.5)</strong></td>
-          <td>상위주기 0, 익절/손절 0 (원조 룰 엄격 준수)</td>
-        </tr>
-        <tr>
-          <td><strong>거래 비용 조건</strong></td>
-          <td><strong>수수료 0%, 슬리피지 0%</strong></td>
-          <td>전략에 가장 유리하도록 비용 미차감</td>
+          <td>ADX(14) 추세 필터 적용, 수수료 0% 기준</td>
         </tr>
         <tr>
           <td><strong>비트코인 단순 보유 (존버)</strong></td>
@@ -159,40 +157,69 @@
       </tbody>
     </table>
 
-    <h2>3. 왜 비트코인이 10배 폭등하는 동안 봇은 마이너스일까? (3대 치명적 맹점)</h2>
-    <p>차트를 보시면 녹색 점선인 <strong>비트코인 단순 보유선은 하늘을 뚫고 우상향(+955.57%)</strong>하고 있지만, 하단의 <strong>변동성 돌파 누적 수익선(녹색/적색 실선)은 지루한 우하향 박스권(-3.22%)</strong>에 갇혀 있습니다.</p>
-    <p>수수료를 단 1원도 떼지 않았음에도 원조 전략이 완전히 참패한 3가지 구조적 이유는 다음과 같습니다:</p>
+    <div style="background:#1c2128; padding:16px; border-radius:8px; border-left:4px solid #388bfd; margin:20px 0;">
+      <p style="margin:0;">
+        💡 <strong>참고: 필터까지 걸었는데도 왜 마이너스일까?</strong><br>
+        이번 실측 데이터는 무지성 매수를 방지하기 위해 <strong>ADX(14) 추세 강도 필터</strong>까지 결합하고 수수료를 0%로 둔 상태였습니다. 그럼에도 불구하고 총수익률은 <strong>-3.22%</strong>로 원금을 까먹었습니다. 단순한 기술적 보조지표 필터 하나로는 횡보장 휩쏘를 원천 차단하기 어렵다는 뜻입니다.
+      </p>
+    </div>
 
-    <h3>① 승률 37.33%의 덫 (잦은 윗꼬리 휩쏘)</h3>
+    <h2>3. [검증 2] 수익률 및 MDD 낙폭 곡선과 실제 매매 체결 로그</h2>
+
+    <div class="img-box">
+      <img src="../images/backtest_02_mdd_trades.png" alt="2. 수익률 및 MDD 분석 곡선과 실제 매매 체결 내역">
+      <div class="img-caption">▲ [실측 인증 2] 누적 수익률(녹색선) vs USDT MDD 낙폭(적색선) 및 실제 SELL/BUY 체결 내역</div>
+    </div>
+
+    <h3>🔍 차트와 체결 내역이 증명하는 2가지 진실</h3>
+    <ol>
+      <li>
+        <strong>-43.65%라는 잔혹한 드로다운 (적색 낙폭선):</strong><br>
+        상단 차트에서 적색 선(USDT MDD)을 보면, 2021년 고점 이후 2022년 하락장 내내 -30%~-43%의 깊은 수렁에 갇혀 있었습니다. 수익률(녹색선)은 2020년 반짝 상승한 이후 6년 내내 원금 근처에서 횡보하다 결국 0% 아래로 침몰했습니다.
+      </li>
+      <li>
+        <strong>실제 체결 로그의 악순환:</strong><br>
+        하단 체결표를 보면 <code>SELL +0.99% (+$113)</code>로 찔끔 먹은 뒤, 곧바로 다음 거래에서 <code>SELL -2.84% (-$329)</code>로 크게 물려 토해내는 전형적인 <strong>"찔끔 먹고 크게 털리는"</strong> 패턴이 적나라하게 나타납니다. 장중 돌파 시점에 시장가로 진입하지만, 코인 시장 특유의 급격한 윗꼬리에 걸려 고점에 물린 뒤 다음 날 아침 손절당하는 것입니다.
+      </li>
+    </ol>
+
+    <h2>4. [검증 3] 6개년(2020~2026) 연도별 & 월별 수익률 히트맵</h2>
+
+    <div class="img-box">
+      <img src="../images/backtest_03_monthly_heatmap.png" alt="3. 6개년(2020~2026) 월별 & 연도별 수익률 히트맵">
+      <div class="img-caption">▲ [실측 인증 3] 2020년부터 2026년까지의 월별/연도별 수익률 매트릭스 (%)</div>
+    </div>
+
+    <h3>📅 연도별 성적표 요약</h3>
+    <ul>
+      <li><strong>2020년: <code>+36.89%</code></strong> (코로나 팬데믹 이후 유동성 대폭발 시기, 유일한 호황)</li>
+      <li><strong>2021년: <code>+4.80%</code></strong> (비트코인이 69,000달러를 찍으며 역사적 불장을 달렸는데, 전략은 고작 4.8%?)</li>
+      <li><strong>2022년: <code>-26.64%</code></strong> (대세 하락장에서 연간 -26% 폭락하며 계좌 붕괴)</li>
+      <li><strong>2023년: <code>+2.86%</code></strong> (비트코인 100% 반등하는 동안 제자리걸음)</li>
+      <li><strong>2024년: <code>+9.09%</code></strong> (비트코인 신고가 랠리에도 한 자릿수 수익에 그침)</li>
+      <li><strong>2025년: <code>-3.37%</code></strong> (지루한 박스권에서 손실 마감)</li>
+      <li><strong>2026년: <code>-15.20%</code></strong> (연초부터 연이은 손절로 -15% 급락)</li>
+    </ul>
+
+    <h3>📌 히트맵이 말해주는 결정적 결함: "상승장 복리 기회 상실"</h3>
     <p>
-      변동성 돌파는 장중 가격이 <code>시가 + 전일변동폭*0.5</code>를 뚫을 때 시장가로 따라붙습니다. 하지만 코인 시장은 변동성이 극심하여, 장중에 돌파가 나와서 매수 체결이 된 직후 차익실현 매물이 쏟아지며 <strong>긴 윗꼬리를 달고 시가 아래로 곤두박질치는 날</strong>이 허다합니다.
-      결과적으로 총 375회 거래 중 <strong>235회(62.7%)가 손실 마감</strong>이었으며, 매수할 때마다 고점에 물리는 악순환이 6년 내내 반복되었습니다.
+      비트코인이 몇 배씩 폭등했던 2021년과 2024년에 전략 수익률은 고작 4%와 9%에 불과했습니다. 이유는 간단합니다. 비트코인이 며칠 연속으로 50%씩 오를 때, 전략은 <strong>"다음 날 아침 시가에 무조건 전량 매도"</strong>하므로 랠리의 90%를 놓치고, 꼭대기에서 재진입했다가 물리기 때문입니다.
     </p>
 
-    <h3>② 대상승장 조기 청산의 역설 (추세 복리 상실)</h3>
-    <p>
-      비트코인이 대세 상승장에 진입하면 3일, 5일, 1주일 연속으로 폭발적인 장대양봉을 뽑아냅니다. 하지만 원조 전략은 <strong>"다음 날 아침 시가에 무조건 전량 매도"</strong>하므로, 하루치 수익만 먹고 포지션을 비워버립니다. 
-      그리고 그 다음 날 더 높아진 시가 위에서 또 돌파를 기다려 비싸게 재매수하다가, 하루라도 꺾이면 고점에서 물려 그동안의 이익을 다 반납하게 됩니다.
-    </p>
-
-    <h3>③ 횡보장의 계좌 갉아먹기 & 수수료의 공포</h3>
-    <p>
-      비트코인이 몇 달 동안 방향성 없이 좁은 박스권에서 오르내릴 때, 전략은 지속적으로 돌파 매수를 시도했다가 당일 손실을 입으며 계좌를 갉아먹습니다.
-      그 결과 번 돈과 잃은 돈의 비율인 <strong>프로핏 팩터가 0.99</strong>로, 6년 동안 수백 번 매매를 거듭할수록 자산이 쪼그라들었습니다.
-    </p>
-    <p>
-      만약 여기에 실전 선물 거래소 수수료(테이커 0.05%)와 실전 체결 슬리피지(0.10%)를 반영했다면, <strong>375회 매매를 거치는 동안 수수료로만 원금의 30~50% 이상이 증발하여 계좌는 회복 불가능한 깡통</strong>을 찼을 것입니다.
-    </p>
-
-    <h2>4. 퀀트 연구소의 최종 결론</h2>
+    <h2>5. 퀀트 연구소의 최종 결론</h2>
     <blockquote>
-      "원조 규칙(고정 K=0.5, 무필터) 그대로의 변동성 돌파는 현대 코인 시장에서 완전히 죽은 전략이다."
+      "원조 규칙 그대로의 변동성 돌파는 현대 코인 시장에서 완전히 수명을 다한 전략이다."
     </blockquote>
     <p>
-      1980년대 미국 주식/선물 시장에서 탄생한 원조 공식은 알고리즘 봇들이 넘쳐나는 현대 가상자산 시장에서 더 이상 마법의 탄환이 아닙니다.
+      1980년대 미국 선물 시장에서 탄생한 원조 룰은 24시간 365일 고변동성 휩쏘가 난무하는 현대 가상자산 시장에서 마법의 무기가 될 수 없습니다.
     </p>
+    <ul>
+      <li><strong>수수료를 0%로 쳐주어도 원금 손실(-3.22%)</strong>이며,</li>
+      <li><strong>ADX 추세 필터를 걸어도 승률은 37%</strong>에 불과하며,</li>
+      <li>실전 선물 거래소 수수료(테이커 0.05%)와 슬리피지(0.10%)를 넣는 순간 <strong>375번의 매매 동안 계좌의 절반 이상이 거래 비용으로 증발</strong>합니다.</li>
+    </ul>
     <p>
-      추세를 판별하는 <strong>장기 이평선 필터(Trend Filter)</strong>, 박스권 횡보를 걸러내는 <strong>동적 이격도 보정</strong>, 그리고 변동성에 맞춰 비중을 조절하는 <strong>동적 리스크 관리</strong>가 없는 무지성 변동성 돌파는 계좌를 파멸로 이끄는 지름길임을 6년 8개월간의 실측 데이터가 명백히 증명하고 있습니다.
+      따라서 변동성 돌파 전략을 실전에서 사용하려면, 단순한 지표 조합이 아니라 <strong>시장 국면(레짐)에 따라 진입 자체를 차단하는 상위 필터</strong>, 그리고 <strong>미국 주식이나 현금 자산과의 엄격한 자산배분</strong>이 없이는 결코 장기 우상향을 달성할 수 없습니다.
     </p>
 
     <div class="disclaimer">
