@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[시스템 구축기 #1] 코딩 1도 모르는 초보자의 AI 100% 위임 개발기: 안티그래비티 세팅과 AGENTS.md 작성 비결</title>
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+  <link rel="shortcut icon" href="../favicon.ico">
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+  <style>
+    :root {
+      --bg-color: #0d1117;
+      --card-bg: #161b22;
+      --border-color: #30363d;
+      --text-main: #c9d1d9;
+      --text-title: #f0f6fc;
+      --accent: #38bdf8;
+      --cyan: #00ffa3;
+      --blue: #58a6ff;
+      --purple: #a855f7;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      line-height: 1.8;
+      margin: 0;
+      padding: 30px 15px;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 36px;
+    }
+    .nav-back { display: inline-flex; align-items: center; gap: 6px; color: var(--blue); text-decoration: none; font-size: 0.92rem; margin-bottom: 24px; font-weight: 500; }
+    .nav-back:hover { text-decoration: underline; }
+    h1 { color: var(--text-title); font-size: 1.65rem; border-bottom: 2px solid var(--border-color); padding-bottom: 16px; line-height: 1.45; margin-top: 0; }
+    h2 { color: var(--text-title); font-size: 1.35rem; margin-top: 42px; border-left: 4px solid var(--accent); padding-left: 14px; }
+    h3 { color: var(--accent); font-size: 1.15rem; margin-top: 26px; }
+    .meta-bar { font-size: 0.88rem; color: #8b949e; margin-bottom: 22px; display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+    .badge { display: inline-block; padding: 4px 10px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; background: rgba(56, 189, 248, 0.15); color: var(--accent); border: 1px solid rgba(56, 189, 248, 0.3); }
+    .badge-green { background: rgba(0, 255, 163, 0.15); color: var(--cyan); border: 1px solid rgba(0, 255, 163, 0.3); }
+    .badge-purple { background: rgba(168, 85, 247, 0.15); color: var(--purple); border: 1px solid rgba(168, 85, 247, 0.3); }
+    .tldr-box { background: #1c2128; border: 1px solid var(--accent); border-radius: 8px; padding: 22px; margin: 24px 0; }
+    .tldr-box h4 { margin: 0 0 12px 0; color: var(--accent); font-size: 1.05rem; }
+    .tldr-box ul { margin: 0; padding-left: 20px; }
+    .tldr-box li { margin-bottom: 8px; }
+    blockquote { border-left: 4px solid var(--cyan); margin: 26px 0; padding: 14px 18px; background: rgba(0, 255, 163, 0.06); color: #e6edf3; border-radius: 0 8px 8px 0; font-style: normal; }
+    pre { background: #090d16; border: 1px solid var(--border-color); border-radius: 8px; padding: 18px; overflow-x: auto; font-family: "JetBrains Mono", Consolas, monospace; font-size: 0.88rem; line-height: 1.6; color: #f0f6fc; }
+    code { font-family: "JetBrains Mono", Consolas, monospace; font-size: 0.9em; background: #21262d; padding: 2px 6px; border-radius: 4px; color: #79c0ff; }
+    pre code { background: transparent; padding: 0; color: inherit; }
+    .highlight-card { background: rgba(22, 27, 34, 0.8); border: 1px solid var(--border-color); border-radius: 8px; padding: 18px; margin: 16px 0; }
+    .highlight-card strong { color: var(--text-title); }
+    .footer-note { background: #21262d; border-left: 4px solid var(--blue); padding: 14px; font-size: 0.85rem; color: #8b949e; border-radius: 4px; margin-top: 40px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="../index.html" class="nav-back">← 포털 메인으로 돌아가기</a>
+    
+    <div class="meta-bar">
+      <span class="badge">🛠️ 시스템 구축기 #1</span>
+      <span class="badge badge-green">Antigravity</span>
+      <span class="badge badge-purple">AGENTS.md</span>
+      <span>📅 2026.09.20 (일)</span>
+      <span>•</span>
+      <span>작성자: PI-BOT 운영자 (비전공 퀀트 초보)</span>
+    </div>
+
+    <h1>[시스템 구축기 #1] 코딩 1도 모르는 초보자의 AI 100% 위임 개발기: 안티그래비티 세팅과 AGENTS.md 작성 비결</h1>
+
+    <div class="tldr-box">
+      <h4>💡 핵심 3줄 요약 (TL;DR)</h4>
+      <ul>
+        <li><strong>솔직한 현실</strong>: 파이썬 문법도 모르는 초보자가 3개 트레이딩 봇 자산수집, 블로그 발행, 유튜브 라이브 방송을 만든 비결은 <strong>"컴퓨터와 AI에게 올바르게 위임하는 법"</strong>을 알았기 때문입니다.</li>
+        <li><strong>기본 환경 세팅</strong>: <strong>Antigravity</strong> + 2대 필수 MCP(<strong>StitchMCP, sequential-thinking</strong>) + 과감한 <strong>터보 모드(Turbo Mode) & Always Proceed</strong> 설정으로 AI에게 전권을 위임했습니다.</li>
+        <li><strong>성패를 가른 핵심</strong>: 코딩을 몰라도 <strong><code>AGENTS.md</code></strong>에 <strong>"0% 무간섭 원칙"</strong>과 <strong>"300줄 이하 모듈 규칙"</strong>을 명시해 두면, AI가 알아서 레고 블록처럼 완벽한 코드를 완성해 냅니다.</li>
+      </ul>
+    </div>
+
+    <h2>💡 1. 들어가며: "저도 코딩 한 줄 모르는 초보자입니다"</h2>
+    <p>
+      솔직하게 고백하자면, 저는 파이썬 기초 문법조차 제대로 알지 못하는 평범한 일반인이자 완전한 코딩 초보자입니다. 검은 터미널 창에 붉은색 에러 메시지가 길게 쏟아져 나오면 가슴부터 덜컥 내려앉던 사람이었습니다.
+    </p>
+    <p>
+      하지만 지금 제가 구축하여 24시간 돌리고 있는 <strong>PI-BOT 멀티에셋 퀀트 시스템</strong>은 상상 이상으로 정교하게 움직이고 있습니다:
+    </p>
+    <ul>
+      <li>3개의 독립 트레이딩 봇(Bybit 선물 롱/숏, Alpaca 미국 주식)과 관제탑의 실시간 자산·손익·포지션 데이터를 자동으로 수집</li>
+      <li>헤드리스 크롬(Headless Chrome)으로 고화질 대시보드를 캡처하고 리밸런싱 표를 카드별로 자동 슬라이싱</li>
+      <li>전문가 수준의 퀀트 투자 일지(Markdown/HTML)를 정기 생성하고 텔레그램으로 인증 사진과 함께 프리뷰 발송</li>
+      <li>GitHub Pages 블로그 포털로 실시간 자동 배포 및 24시간 실시간 유튜브 라이브 방송 HUD 송출</li>
+    </ul>
+    <p>
+      코딩 지식이 전혀 없는 초보자가 어떻게 이 거대한 자동화 파이프라인을 혼자서 완성할 수 있었을까요?<br>
+      비결은 오직 하나, <strong>"컴퓨터와 AI에게 올바르게 위임하는 방법"</strong>을 배웠기 때문입니다.
+    </p>
+
+    <h2>🛠️ 2. 초보자를 위한 Antigravity 기본 설치 및 3대 설정</h2>
+    <p>
+      AI에게 일을 믿고 맡기려면, 먼저 AI가 능동적으로 일할 수 있는 강력한 작업 환경과 도구를 쥐여주어야 합니다. 제가 실제로 세팅한 3단계를 그대로 공유합니다.
+    </p>
+
+    <h3>① 구글 딥마인드의 안티그래비티(Antigravity) 설치</h3>
+    <p>
+      단순히 대화만 주고받는 웹 챗봇(ChatGPT 등)은 코딩을 대신 실행하거나 내 컴퓨터의 파일을 직접 만들어주지 못합니다.<br>
+      <strong>Antigravity</strong>는 파일 생성, 수정, 터미널 명령어 실행, 코드 자체 검증까지 스스로 수행하는 최첨단 <strong>"에이전틱(Agentic) AI 코딩 비서"</strong>입니다. 코딩을 모르는 초보자일수록 말로만 지시하면 알아서 파일을 만들고 고쳐주는 Antigravity 환경이 필수적입니다.
+    </p>
+
+    <h3>② 필수 MCP (Model Context Protocol) 2종 설정</h3>
+    <p>
+      Antigravity에 날개를 달아주는 비밀 무기가 바로 <strong>MCP(Model Context Protocol)</strong>입니다. 초보자라면 아래 2가지는 무조건 켜두시기를 강력히 추천합니다.
+    </p>
+    <div class="highlight-card">
+      <p style="margin: 0 0 6px 0;"><strong style="color: var(--accent);">1. StitchMCP</strong></p>
+      <p style="margin: 0; font-size: 0.95rem;">• <strong>역할</strong>: 구글의 차세대 UI 디자인 시스템 MCP.<br>
+      • <strong>초보자 체감</strong>: CSS나 HTML 코딩을 전혀 몰라도 <em>"모던한 다크모드 글래스모피즘 스타일로 블로그 메인 화면을 만들어줘"</em>라고 한마디만 하면, 디자이너가 만든 것 같은 고품질 웹 UI 컴포넌트를 즉시 코드로 구현해 줍니다. 저희 블로그 포털 메인도 이 도구로 설계되었습니다.</p>
+    </div>
+    <div class="highlight-card">
+      <p style="margin: 0 0 6px 0;"><strong style="color: var(--cyan);">2. sequential-thinking</strong></p>
+      <p style="margin: 0; font-size: 0.95rem;">• <strong>역할</strong>: 복잡한 아키텍처 설계를 위한 단계별 심층 사고 도구.<br>
+      • <strong>초보자 체감</strong>: AI가 성급하게 아무 코드나 짜다가 에러를 내지 않고, 생각의 단계를 1단계부터 차근차근 밟아가며 구조적 결함이 없는지 자체 검증한 뒤 코딩을 시작하게 만듭니다.</p>
+    </div>
+
+    <h3>③ 과감한 위임 세팅: 터보 모드 & Always Proceed</h3>
+    <p>
+      초보자 입장에서 가장 지치고 피로한 순간은, AI가 사소한 명령어 하나 실행할 때마다 <em>"이 명령어를 터미널에서 실행할까요?"</em>라고 일일이 물어보는 것입니다. 솔직히 코드를 봐도 무슨 내용인지 모르는데 매번 승인 버튼을 누르는 것은 비효율적입니다.
+    </p>
+    <p>
+      그래서 저는 대부분의 실행을 컴퓨터와 AI에 전적으로 위임하는 설정을 사용합니다:
+    </p>
+    <ul>
+      <li><strong>Permission Preset: 터보 모드 (Turbo Mode)</strong><br>AI가 파일 생성, 편집, 터미널 명령 실행, 백그라운드 테스트를 거침없이 스스로 수행하도록 권한을 전면 위임합니다.</li>
+      <li><strong>Artifact Review Policy: Always Proceed</strong><br>AI가 작성한 실행 계획 단계에서 멈추어 기다리지 않고, 지체 없이 실제 코드 구현과 실행으로 직진하도록 설정합니다.</li>
+    </ul>
+
+    <blockquote>
+      💡 <strong>초보자의 핵심 통찰</strong><br>
+      "내가 코딩을 모르기 때문에, 컴퓨터와 AI에게 최대한 위임하는 것입니다. 단, AI가 엉뚱한 길로 폭주하지 않도록 강력한 '원칙'을 세워두어야 합니다. 그 원칙이 바로 다음에 설명할 <strong>AGENTS.md</strong>입니다."
+    </blockquote>
+
+    <h2>🎯 3. 가장 중요한 핵심: AGENTS.md 작성 비결</h2>
+    <p>
+      제가 이 프로젝트를 진행하면서 가장 뼈저리게 느낀 최고의 교훈은 이것입니다:
+    </p>
+    <div style="text-align: center; margin: 25px 0;">
+      <span style="font-size: 1.15rem; font-weight: bold; color: var(--cyan); background: rgba(0,255,163,0.1); padding: 12px 24px; border-radius: 8px; border: 1px solid rgba(0,255,163,0.3); display: inline-block;">
+        "코딩을 할 줄 몰라도, AGENTS.md만 제대로 작성해 놓으면 AI가 100점짜리 코딩을 해낸다!"
+      </span>
+    </div>
+    <p>
+      AI에게 아무런 제약 없이 <em>"블로그 자동 발행 시스템 만들어줘"</em>라고만 말하면 어떻게 될까요?<br>
+      AI는 자기 마음대로 1,000줄이 넘는 거대한 스파게티 코드를 짜거나, 기존에 잘 돌아가던 관제탑의 소스 코드를 마구잡이로 뜯어고쳐 전체 시스템을 먹통으로 만들어 버립니다. 초보자는 어디가 고장 났는지 찾지도 못하고 결국 포기하게 됩니다.
+    </p>
+    <p>
+      <code>AGENTS.md</code>는 AI가 코딩할 때 <strong>절대로 넘어서는 안 되는 안전 펜스(가드레일)</strong>를 적어두는 헌법과도 같습니다.
+    </p>
+
+    <h3>📋 실제 PI-BOT 프로젝트의 AGENTS.md 원문 공개</h3>
+    <pre><code># PI-BOT Blog Agent Development Guidelines
+
+이 지침서는 PI-BOT 멀티에셋 퀀트 블로그 자동 발행 전담 AI 에이전트 (pi-bot-blog)의 개발, 유지보수, 아키텍처 원칙을 정의합니다.
+AI 에이전트는 본 프로젝트의 코드를 작성하거나 수정할 때 아래 규칙을 예외 없이 100% 준수해야 합니다.
+
+## 🎯 1. 프로젝트 목적 및 범위 (Scope)
+- 목적:
+  1. 관제탑(http://127.0.0.1:8088)의 자산 및 지표를 수집하여 퀀트 투자 일지(Markdown/HTML)를 정기 생성.
+  2. Headless Chrome을 통해 고화질 스크린샷 캡처 및 블로그용 카드 이미지 자동 슬라이싱.
+  3. 텔레그램 프리뷰 발송 및 자동 스케줄링(crontab/schedule) 지원.
+- 0% 무간섭(Non-Invasive) 원칙:
+  - 기존 3개 봇 및 관제탑의 내부 코드, DB, 환경설정을 절대 수정하거나 침범하지 않습니다.
+  - 오직 관제탑의 공식 REST API(GET /api/tower/status 등)만 읽기 전용으로 호출합니다.
+
+## 🛑 2. 스파게티 코드 방지 4대 철칙
+① 단일화 원칙 &amp; 300줄 이하 모듈 구성 (Clean Code)
+- 모든 파이썬 스크립트는 최대 300줄 이내로 작성합니다.
+- 불필요하게 클래스를 잘게 쪼개어 상속/파사드 계층을 만드는 행위를 금지하며, 함수 기반의 직관적 파이프라인으로 구성합니다.
+
+② 정적 최상단 임포트 (Top-level Import Only)
+- 순환 참조를 피하겠다며 함수 내부에서 동적 임포트(from xxx import yyy)하지 마십시오.
+- 모듈 최상단에만 명확하게 import를 선언하고, 단방향 의존성을 유지하십시오.
+
+③ 외부 라이브러리 최소화
+- 시스템 기본 subprocess (Chrome Headless), requests, Pillow(PIL) 외의 무거운 외부 브라우저 프레임워크(Selenium, Playwright 등)의 과도한 추가를 지양하고 경량성을 유지합니다.
+
+④ 명확한 에러 핸들링 &amp; 로깅
+- except: pass로 예외를 삼키지 말고 항상 logger.warning 또는 logger.error로 추적 가능한 로그를 남깁니다.</code></pre>
+
+    <h3>🔍 초보자가 반드시 챙겨야 할 AGENTS.md 3대 핵심 요령</h3>
+
+    <div class="highlight-card">
+      <p style="margin: 0 0 6px 0;"><strong style="color: var(--accent);">1. 0% 무간섭(Non-Invasive) 원칙: "소중한 기존 시스템을 지켜라"</strong></p>
+      <p style="margin: 0; font-size: 0.95rem;">초보자에게 가장 두려운 사고는 <em>'새 기능을 추가하려다 기존에 잘 돌아가던 프로그램이 망가지는 것'</em>입니다.<br>
+      저는 AGENTS.md 최상단에 <strong>"기존 봇과 관제탑 내부 코드는 1글자도 수정하지 말고, 오직 공식 REST API만 읽기 전용으로 가져와라"</strong>라고 못을 박았습니다.<br>
+      이 한 문장 덕분에 AI는 기존 봇 시스템을 완벽하게 보존하면서, 외부에서 데이터만 안전하게 가져와 블로그를 찍어내는 100% 독립적인 안전 파이프라인을 구축했습니다.</p>
+    </div>
+
+    <div class="highlight-card">
+      <p style="margin: 0 0 6px 0;"><strong style="color: var(--accent);">2. '300줄 이하 모듈' 제한: 스파게티 괴물 코드 원천 차단</strong></p>
+      <p style="margin: 0; font-size: 0.95rem;">AI에게 파일 길이 제한을 주지 않으면 한 파일에 1,000줄, 1,500줄짜리 복잡한 코드를 만들어 냅니다. 그렇게 되면 나중에 에러가 났을 때 AI 자신도 코드를 헷갈려합니다.<br>
+      <strong>"모든 파이썬 스크립트는 300줄 이내로 작성할 것"</strong>이라는 규칙을 두면, AI가 알아서:
+      <br>• 데이터 수집기 (<code>data_collector.py</code> - 187줄)
+      <br>• 스크린샷 캡처기 (<code>snap_shooter.py</code> - 151줄)
+      <br>• 깃허브 퍼블리셔 (<code>github_publisher.py</code> - 266줄)
+      <br>• 아카이브 생성기 (<code>archive_builder.py</code> - 172줄)
+      <br>처럼 레고 블록 형태로 깔끔하게 역할을 분리하여 유지보수가 극도로 쉬워집니다.</p>
+    </div>
+
+    <div class="highlight-card">
+      <p style="margin: 0 0 6px 0;"><strong style="color: var(--accent);">3. "에러를 절대 숨기지 마라 (No except: pass)"</strong></p>
+      <p style="margin: 0; font-size: 0.95rem;">코딩을 모르는 초보자는 프로그램이 멈췄을 때 왜 멈췄는지 알 수가 없습니다. 일부 AI는 에러가 났을 때 대충 <code>except: pass</code>로 덮어버려 겉으로는 돌아가는 척하지만 실제로는 데이터가 비어 있는 유령 시스템을 만듭니다.<br>
+      규칙에 <strong>"모든 예외는 로거(logger)를 통해 기록하라"</strong>고 명시해 두면, 문제가 생겼을 때 로그 파일에 원인이 명확히 찍힙니다. 초보자는 그저 그 로그 한 줄을 복사해서 AI에게 <em>"이 로그 보고 원인 찾아서 고쳐줘"</em>라고 전달하기만 하면 10초 만에 버그가 해결됩니다!</p>
+    </div>
+
+    <h2>🚀 4. 결론: 문법 공부보다 중요한 것은 '좋은 프롬프트와 원칙'</h2>
+    <p>
+      많은 비전공자분들이 <em>"파이썬 기초 문법 강의를 몇 달 들어야 프로그램을 만들 수 있지 않을까?"</em> 고민하십니다. 하지만 2026년 현재의 에이전틱 AI 환경에서는 그렇지 않습니다.
+    </p>
+    <ol>
+      <li><strong>강력한 실행 도구(Antigravity + MCP)</strong>를 준비하고,</li>
+      <li>컴퓨터와 AI가 스스로 작업할 수 있도록 <strong>과감하게 권한을 위임(터보 모드)</strong>한 뒤,</li>
+      <li>시스템이 망가지지 않도록 <strong>명확한 설계 규칙(AGENTS.md)</strong>이라는 든든한 가드레일을 설치하십시오.</li>
+    </ol>
+    <p>
+      코딩 지식이 전혀 없더라도, 올바른 지침서(<code>AGENTS.md</code>) 한 장만 준비되어 있다면 AI는 여러분이 꿈꾸던 퀀트 투자 일지, 포털 사이트, 24시간 라이브 방송 시스템까지 완벽하게 현실로 만들어 줄 것입니다.
+    </p>
+    <p>
+      지금 바로 여러분의 프로젝트 폴더에 <code>AGENTS.md</code>를 만들고 첫 줄을 적어보세요!
+    </p>
+
+    <div class="footer-note">
+      💡 <strong>안내</strong>: 본 포스팅은 비전공자 운영자의 실제 Antigravity 기반 PI-BOT 블로그 시스템 구축 경험을 바탕으로 솔직하게 작성되었습니다. 모든 시스템 코드는 0% 무간섭 원칙 하에 오픈소스로 안전하게 관리되고 있습니다.
+    </div>
+  </div>
+</body>
+</html>
