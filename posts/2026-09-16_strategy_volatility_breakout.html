@@ -4,6 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>[전략 팩트체크 #1] 래리 윌리엄스 변동성 돌파의 허와 실: 필터 없는 원조 방식의 충격적 진실 (-66.4% vs +955.6%)</title>
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+  <link rel="shortcut icon" href="../favicon.ico">
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png">
   <style>
     :root {
       --bg-color: #0d1117;
@@ -38,9 +42,18 @@
     .badge { display: inline-block; padding: 4px 10px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; background: #21262d; color: var(--accent); margin-right: 6px; }
     .tldr-box { background: #1c2128; border: 1px solid #f59e0b; border-radius: 8px; padding: 18px; margin: 20px 0; }
     .tldr-box li { margin-bottom: 8px; }
-    table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 0.95rem; }
-    th, td { border: 1px solid var(--border-color); padding: 12px; text-align: center; }
-    th { background: #21262d; color: var(--text-title); font-weight: 600; }
+    .table-responsive { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 24px 0; border-radius: 8px; border: 1px solid var(--border-color); }
+    table { width: 100%; min-width: 540px; border-collapse: collapse; margin: 0; font-size: 0.9rem; }
+    th, td { border: 1px solid var(--border-color); padding: 10px 8px; text-align: center; }
+    th { background: #21262d; color: var(--text-title); font-weight: 600; white-space: nowrap; }
+    @media (max-width: 640px) {
+      body { padding: 12px 8px; }
+      .container { padding: 18px 14px; border-radius: 10px; }
+      h1 { font-size: 1.3rem; }
+      h2 { font-size: 1.15rem; }
+      .tldr-box { padding: 14px; }
+      th, td { padding: 8px 6px; font-size: 0.82rem; }
+    }
     .pos-pnl { color: var(--green); font-weight: bold; }
     .neg-pnl { color: var(--red); font-weight: bold; }
     .img-box { margin: 24px 0; text-align: center; }
@@ -89,6 +102,8 @@
 
     <h2>2. [실측 팩트체크] 비트코인 6개년 장기 백테스트 결과표</h2>
     <p>가공된 이론치가 아닙니다. PI-BOT 백테스터 엔진을 통해 2020년부터 2026년까지 비트코인의 과거 1일봉 전체 데이터를 시뮬레이션한 실측 결과입니다.</p>
+    <div class="table-responsive">
+
 
     <table>
       <thead>
@@ -144,6 +159,7 @@
         </tr>
       </tbody>
     </table>
+    </div>
 
     <h2>3. [차트 분석] 6년간 누적 수익 곡선 & MDD 낙폭 분석</h2>
     <div class="img-box">
@@ -168,6 +184,8 @@
       <img src="../images/backtest_pure_yearly_bars.png?v=20260916_pure" alt="연도별 수익률 비교 바 차트">
       <div class="img-caption">▲ [실측 인증 2] 2020년부터 2026년까지 연도별 성적표: 단순 존버 vs 원조(수수료 0%) vs 원조(실전비용)</div>
     </div>
+    <div class="table-responsive">
+
 
     <table>
       <thead>
@@ -231,6 +249,7 @@
         </tr>
       </tbody>
     </table>
+    </div>
 
     <blockquote>
       ⚠️ <strong>가장 충격적인 대목은 2021년과 2023년입니다.</strong><br>
