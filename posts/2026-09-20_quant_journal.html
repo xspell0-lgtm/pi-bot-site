@@ -41,9 +41,21 @@
     .badge { display: inline-block; padding: 4px 10px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; background: #21262d; color: var(--accent); }
     .tldr-box { background: #1c2128; border: 1px solid #388bfd; border-radius: 8px; padding: 18px; margin: 20px 0; }
     .tldr-box li { margin-bottom: 8px; }
-    table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 0.95rem; }
-    th, td { border: 1px solid var(--border-color); padding: 12px; text-align: center; }
-    th { background: #21262d; color: var(--text-title); }
+    .nav-bar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--border-color); }
+    .nav-back { display: inline-flex; align-items: center; gap: 6px; color: var(--accent); text-decoration: none; font-size: 0.9rem; font-weight: 600; }
+    .nav-back:hover { text-decoration: underline; }
+    .table-responsive { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 20px 0; border-radius: 8px; border: 1px solid var(--border-color); }
+    table { width: 100%; min-width: 520px; border-collapse: collapse; margin: 0; font-size: 0.9rem; }
+    th, td { border: 1px solid var(--border-color); padding: 10px 8px; text-align: center; }
+    th { background: #21262d; color: var(--text-title); white-space: nowrap; }
+    @media (max-width: 640px) {
+      body { padding: 12px 8px; }
+      .container { padding: 18px 14px; border-radius: 10px; }
+      h1 { font-size: 1.35rem; }
+      h2 { font-size: 1.15rem; }
+      .tldr-box { padding: 14px; }
+      th, td { padding: 8px 6px; font-size: 0.82rem; }
+    }
     .pos-pnl { color: var(--green); font-weight: bold; }
     .neg-pnl { color: var(--red); font-weight: bold; }
     img { max-width: 100%; height: auto; border-radius: 8px; border: 1px solid var(--border-color); margin-top: 12px; }
@@ -54,7 +66,11 @@
   </style>
 </head>
 <body>
-  <div class="container">
+    <div class="container">
+    <div class="nav-bar">
+      <a href="../index.html" class="nav-back">← PI-BOT 포털 메인으로 돌아가기</a>
+      <span style="font-size: 0.75rem; color: #8b949e; font-family: monospace;">PI-BOT QUANT JOURNAL</span>
+    </div>
     <h1>[멀티에셋 퀀트일지] 미국주식 & 가상자산 3대 자동매매 통합 NAV 결산 (2026-09-20) - 퀀트 운용 및 리밸런싱 점검</h1>
     <div style="margin-bottom: 20px;">
       <span class="badge">📅 2026년 9월 20일 일요일</span>
@@ -74,6 +90,8 @@
     <h2>📊 관제탑 실시간 통합 계좌 인증 및 지표 현황</h2>
     <img src="../images/latest_hero_bots.png" alt="통합 순자산 현황">
     <div class="img-caption">▲ [실시간 인증] PI-BOT Master Tower 통합 순자산 및 3대 서버 가동 상태</div>
+    <div class="table-responsive">
+
 
     <table>
       <thead>
@@ -121,9 +139,12 @@
         </tr>
       </tbody>
     </table>
+    </div>
 
     <h2>🪙 가상자산(코인) 퀀트 운용 분석 (Bybit)</h2>
     <p>가상자산 전체 평가 자산은 <strong>$1,550.19 (₩2,147,012)</strong>으로 전체의 <strong>64.0%</strong>를 구성하고 있습니다.</p>
+    <div class="table-responsive">
+
     <table>
       <thead>
         <tr>
@@ -162,9 +183,12 @@
         </tr>
       </tbody>
     </table>
+    </div>
 
     <h2>🇺🇸 미국 주식 퀀트 운용 분석 (Alpaca)</h2>
     <p>미국 주식 포트폴리오는 <strong>$873.21 (₩1,209,396)</strong> 규모로 전체의 <strong>36.0%</strong>를 구성하고 있습니다.</p>
+    <div class="table-responsive">
+
     <table>
       <thead>
         <tr>
@@ -199,6 +223,7 @@
         </tr>
       </tbody>
     </table>
+    </div>
 
     <h2>🌐 포트폴리오 수익률 곡선 & AI 자산 배분</h2>
     <img src="../images/latest_portfolio_chart.png" alt="통합 수익률 곡선">
